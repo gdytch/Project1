@@ -1,4 +1,4 @@
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top" >
               <div class="container">
                   <div class="navbar-header">
 
@@ -16,7 +16,6 @@
                       </a>
                   </div>
                   <ul class="nav navbar-nav navbar-left">
-                    <li><a href="/posts">Posts</a></li>
                     <li><a href="/about">About</a></li>
 
                   </ul>

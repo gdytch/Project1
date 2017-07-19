@@ -31,7 +31,7 @@ class TeacherLoginController extends Controller
           return response()->json($errors, 422);
       }
 
-      return redirect('/#teacher')
+      return redirect('/teacher/login')
           ->withInput($request->only($this->username()))
           ->withErrors($errors);
 

@@ -101,3 +101,7 @@
   display: inline-block;
   border-radius: 50%;
 }
+
+.form-group{
+  float: left;
+}

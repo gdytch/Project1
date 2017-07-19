@@ -21,9 +21,7 @@ class PagesController extends Controller
     public function about(){
       return view('pages.about');
     }
-    public function wall(){
-      return view('pages.wall');
-    }
+
     public function login(){
       return view('pages.index');
     }

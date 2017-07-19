@@ -20,8 +20,10 @@
 <body>
   <body>
     @include('inc.navbar')
-    @include('inc.messages')
-    @yield('content')
+    <div style="margin-top: 80px;">
+        @include('inc.messages')
+        @yield('content')
+    </div>
   </body>
   <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>

@@ -19,14 +19,13 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::get('/about', 'PagesController@about');
 Route::get('/wall', 'PagesController@wall');
-Route::resource('posts', 'PostsController');
 
 Auth::routes();
 
 //User Routes
 Route::group(['middleware' => 'auth:web'], function () {
     // All my routes that needs a logged in user
-    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard', 'StudentDashboardController@index');
 });
 
 
@@ -40,11 +39,12 @@ Route::prefix('admin')->group(function(){
 //Admin Only Routes
 Route::group(['middleware' => 'auth:admin'], function () {
     // All my routes that needs a logged in admin
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin', 'AdminDashboardController@index');
     Route::prefix('admin')->group(function(){
-      Route::get('/list/students', 'AdminController@list_students')->name('list.students');
-      Route::get('/list/teachers', 'AdminController@list_teachers')->name('list.teachers');
+      Route::resource('student', 'StudentsController');
+      Route::resource('teacher', 'TeachersController');
     });
+
 });
 
 
@@ -57,5 +57,8 @@ Route::prefix('teacher')->group(function(){
 
 Route::group(['middleware' => 'auth:teacher'], function () {
     // All my routes that needs a logged in teacher
-    Route::get('/teacher', 'TeacherController@index');
+    Route::prefix('teacher')->group(function(){
+        Route::get('/', 'TeacherDashboardController@index');
+        Route::get('student/{student}', 'StudentsController@show')->name('student.show');
+    });
 });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TeacherController extends Controller
+class StudentDashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,7 +13,7 @@ class TeacherController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:teacher');
+        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +23,6 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('teacher');
+        return view('dashboards.student-home');
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('layouts.admin')
 
 @section('dashboard-content')
   @if(count($users)  > 0)
@@ -15,6 +15,8 @@
           <th>ID</th>
           <th>Name</th>
           <th>Email</th>
+          <th></th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
@@ -23,7 +25,8 @@
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
-
+            <td width="50"><a href="#" class="btn btn-sm btn-warning">Edit</a></td>
+            <td width="50"><a href="#" class="btn btn-sm btn-danger">Delete</a></td>
           </tr>
         @endforeach
       </tbody>
