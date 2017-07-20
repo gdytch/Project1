@@ -25,10 +25,13 @@
         @yield('content')
     </div>
   </body>
+
   <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+ <script type="text/javascript" src="{{asset('js/custom-pre.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/material.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/ripples.js')}}"></script>
+  <script type="text/javascript" src="{{asset('js/bootstrap_confirmation.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 
 </body>

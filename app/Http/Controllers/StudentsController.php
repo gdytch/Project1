@@ -29,7 +29,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        // Form is in views\forms\add-students
     }
 
     /**
@@ -40,30 +40,23 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'name'       => 'required',
-            'email'      => 'required|email',
+        $this->validate($request, [
+            'name'  => 'required',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed'
-        );
-        $validator = Validator::make(Input::all(), $rules);
+        ]);
 
-        // process the login
-        if ($validator->fails()) {
-            return Redirect::to('/admin/list/students#showAddForm')
-                ->withErrors($validator)
-                ->withInput(Input::except('password'));
-        } else {
             // store
-            $nerd = new Nerd;
-            $nerd->name       = Input::get('name');
-            $nerd->email      = Input::get('email');
-            $nerd->nerd_level = Input::get('nerd_level');
-            $nerd->save();
+        $student = new User;
+        $student->name  = $request->input('name');
+        $student->email = $request->input('email');
+        $student->password = bcrypt($request->input('password'));
+        $student->save();
 
-            // redirect
-            Session::flash('message', 'Successfully created nerd!');
-            return Redirect::to('nerds');
-        }
+        // redirect
+        $message = 'Successfully registerd!';
+        return redirect()->back()->withSuccess($message);
+
     }
 
     /**
@@ -74,7 +67,7 @@ class StudentsController extends Controller
      */
     public function show($id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -85,7 +78,8 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = User::find($id);
+        return view('forms.edit-student')->with('student', $student);
     }
 
     /**
@@ -97,7 +91,20 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'  => 'required',
+            'email' => 'required|email|max:255',
+        ]);
+
+            // store
+        $student = User::find($id);
+        $student->name  = $request->input('name');
+        $student->email = $request->input('email');
+        $student->save();
+
+        // redirect
+        $message = 'Successfully Updated!';
+        return redirect('admin/student/')->withSuccess($message);
     }
 
     /**
@@ -108,6 +115,10 @@ class StudentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = User::find($id);
+        $student->delete();
+
+        $message = 'Student Deleted = ID:'.$id.' Name: '.$student->name.'';
+        return redirect()->back()->withSuccess($message);
     }
 }

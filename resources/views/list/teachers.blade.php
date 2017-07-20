@@ -27,8 +27,26 @@
             <td>{{$teacher->id}}</td>
             <td>{{$teacher->name}}</td>
             <td>{{$teacher->email}}</td>
-            <td width="50"><a href="#" class="btn btn-sm btn-warning">Edit</a></td>
-            <td width="50"><a href="#" class="btn btn-sm btn-danger">Delete</a></td>
+            <td width="50"><a href="{{route('teacher.edit', $teacher->id)}}" class="btn btn-sm btn-warning">Edit</a></td>
+            <td width="50">    <form class="form-horizontal" method="POST" action="{{route('teacher.destroy', $teacher->id)}}">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-sm btn-danger"
+                       data-toggle="confirmation"
+                       data-placement="top"
+                       data-title="Delete Confirmation"
+                       data-btn-ok-type="submit"
+                       data-popout="true"
+                       data-btn-ok-label="Yes"
+                       data-btn-ok-icon="glyphicon glyphicon-share-alt"
+                       data-btn-ok-class="btn-success btn-sm"
+                       data-btn-cancel-label="No"
+                       data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+                       data-btn-cancel-class="btn-danger btn-sm"
+                       data-content="Delete student = {{$teacher->name}}?">Delete</submit>
+
+                   </form>
+              </td>
           </tr>
         @endforeach
       </tbody>

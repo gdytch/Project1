@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Teacher;
-
+use App\Http\Requests\CreateTeacherRequest;
 class TeachersController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:admin')->except('show');
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +31,7 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        //
+        //Form in views\forms\add-teacher
     }
 
     /**
@@ -36,7 +42,22 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $this->validate($request, [
+                'name'  => 'required',
+                'email' => 'required|email|max:255|unique:teachers',
+                'password' => 'required|min:6|confirmed'
+            ]);
+
+            // store
+            $teacher = new User;
+            $teacher->name  = $request->input('name');
+            $teacher->email = $request->input('email');
+            $teacher->password = bcrypt($request->input('password'));
+            $teacher->save();
+
+            // redirect
+            $message = 'Successfully registerd!';
+            return redirect()->back()->withSuccess($message);
     }
 
     /**
@@ -58,7 +79,8 @@ class TeachersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        return view('forms.edit-teacher')->with('teacher', $teacher);
     }
 
     /**
@@ -70,7 +92,18 @@ class TeachersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'  => 'required',
+            'email' => 'required|email|max:255',
+        ]);
+
+        $teacher = Teacher::find($id);
+        $teacher->name  = $request->input('name');
+        $teacher->email = $request->input('email');
+        $teacher->save();
+
+        $message = 'Successfully Updated!';
+        return redirect('admin/teacher/')->withSuccess($message);
     }
 
     /**
@@ -81,6 +114,11 @@ class TeachersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->delete();
+
+        $message = 'Teacher Deleted = ID:'.$id.' Name: '.$teacher->name.'';
+        return redirect()->back()->withSuccess($message);
     }
+
 }

@@ -18,11 +18,13 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::get('/about', 'PagesController@about');
-Route::get('/wall', 'PagesController@wall');
-
 Auth::routes();
 
-//User Routes
+
+
+
+
+//Student Routes
 Route::group(['middleware' => 'auth:web'], function () {
     // All my routes that needs a logged in user
     Route::get('/dashboard', 'StudentDashboardController@index');
@@ -59,6 +61,5 @@ Route::group(['middleware' => 'auth:teacher'], function () {
     // All my routes that needs a logged in teacher
     Route::prefix('teacher')->group(function(){
         Route::get('/', 'TeacherDashboardController@index');
-        Route::get('student/{student}', 'StudentsController@show')->name('student.show');
     });
 });
