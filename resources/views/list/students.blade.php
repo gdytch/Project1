@@ -54,5 +54,4 @@
   @else
     <h1>No Student</h1>
   @endif
-
 @endsection

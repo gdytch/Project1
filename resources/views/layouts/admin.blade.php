@@ -1,6 +1,24 @@
 @extends('layouts.app')
 @section('content')
-  <link href="{{asset('css/dashboard.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/framework/framework-custom.css')}}" rel="stylesheet">
+    <link href="{{asset('css/custom.min.css')}}" rel="stylesheet">
+
+    <div style="margin-top: -100px;">
+        @include('inc.admin-sidebar')
+        <div class="right_col" role="main" >
+            @include('inc.messages')
+            @yield('dashboard-content')
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+  {{-- <link href="{{asset('css/dashboard.css')}}" rel="stylesheet" type="text/css">
   <div class="container-fluid">
        <div class="row">
          <div class="col-sm-3 col-md-2 sidebar">
@@ -16,5 +34,5 @@
            @yield('dashboard-content')
          </div>
        </div>
-     </div>
+     </div> --}}
 @endsection

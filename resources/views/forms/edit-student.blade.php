@@ -1,6 +1,4 @@
 @extends('layouts.admin') @section('dashboard-content')
-
-
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -36,8 +34,8 @@
                     <input type="hidden" name="_method" value="PUT">
 
 
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-6">
                             <button type="submit" class="btn btn-primary">
                                             Update
                                         </button>
