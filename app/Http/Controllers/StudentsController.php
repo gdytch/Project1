@@ -41,16 +41,14 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'  => 'required',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed'
+            'first_name'  => 'required',
+            'middle_name'  => 'required',
+            'last_name'  => 'required',
+            'email' => 'required|email|max:255',
         ]);
 
             // store
-        $student = new User;
-        $student->name  = $request->input('name');
-        $student->email = $request->input('email');
-        $student->password = bcrypt($request->input('password'));
+        $student = new User(Input::all());
         $student->save();
 
         // redirect
@@ -92,13 +90,19 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'  => 'required',
+            'first_name'  => 'required',
+            'middle_name'  => 'required',
+            'last_name'  => 'required',
             'email' => 'required|email|max:255',
         ]);
 
             // store
         $student = User::find($id);
-        $student->name  = $request->input('name');
+        $student->first_name = $request->input('first_name');
+        $student->middle_name = $request->input('middle_name');
+        $student->last_name = $request->input('last_name');
+        $student->gender = $request->input('gender');
+        $student->address = $request->input('address');
         $student->email = $request->input('email');
         $student->save();
 

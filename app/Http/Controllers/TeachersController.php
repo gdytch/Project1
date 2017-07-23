@@ -49,10 +49,7 @@ class TeachersController extends Controller
             ]);
 
             // store
-            $teacher = new User;
-            $teacher->name  = $request->input('name');
-            $teacher->email = $request->input('email');
-            $teacher->password = bcrypt($request->input('password'));
+            $teacher = new Teacher(Input::all());
             $teacher->save();
 
             // redirect

@@ -13,18 +13,22 @@
         <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th></th>
-          <th></th>
+          <th>First Name</th>
+          <th>Middle Name</th>
+          <th>Last Name</th>
+          <th>Year Level</th>
+          <th>Department</th>
         </tr>
         </thead>
         <tbody>
         @foreach ($users as $user)
           <tr>
-            <td>{{$user->id}}</td>
-            <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
+            <td>{{$user->ID_no}}</td>
+            <td>{{$user->first_name}}</td>
+            <td>{{$user->middle_name}}</td>
+            <td>{{$user->last_name}}</td>
+            <td>{{$user->year_level}}</td>
+            <td>{{$user->department_id}}</td>
             <td width="50"><a href="{{route('student.edit',$user->id)}}" class="btn btn-sm btn-warning">Edit</a></td>
             <td width="50">
                 <form class="form-horizontal" method="POST" action="{{route('student.destroy', $user->id)}}">
@@ -42,7 +46,7 @@
                        data-btn-cancel-label="No"
                        data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
                        data-btn-cancel-class="btn-danger btn-sm"
-                       data-content="Delete student = {{$user->name}}?">Delete</submit>
+                       data-content="Delete student = {{$user->first_name}} {{$user->last_name}}?">Delete</submit>
 
                    </form>
             </td>
