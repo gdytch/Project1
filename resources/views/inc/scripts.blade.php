@@ -1,10 +1,9 @@
 <script type="text/javascript" src="{{asset('plugins/jquery/dist/jquery.min.js')}}"></script>
 
-{{-- <script type="text/javascript" src="{{asset('js/app.js')}}"></script> --}}
+{{-- <script type="text  /javascript" src="{{asset('js/app.js')}}"></script> --}}
 <script type="text/javascript" src="{{asset('js/custom-pre.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
-{{-- <script type="text/javascript" src="{{asset('js/material.js')}}"></script> --}}
-<script type="text/javascript" src="{{asset('js/ripples.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('js/bootstrap_confirmation.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 
@@ -38,6 +37,16 @@
 <!-- bootstrap-daterangepicker -->
 <script type="text/javascript" src="{{asset('plugins/moment/min/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('plugins/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-
+<script type="text/javascript" src="{{asset('plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
 <!-- Custom Theme Scripts -->
+<script type="text/javascript" src="{{asset('js/ripples.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/material.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/framework-custom.min.js')}}"></script>
+
+<script type="text/javascript">
+$.material.init();
+
+$('#myDatepickerBirthday').datetimepicker({
+       format: 'YYYY-MM-DD'
+   });
+</script>

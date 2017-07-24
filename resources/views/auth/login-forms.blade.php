@@ -1,8 +1,9 @@
 @section('student-login-form')
-  <div class="panel panel-default">
-      <div class="panel-body">
+  <div class="panel panel-default ">
+      <div class="panel-body inputs">
         <center><h1>Student Login</h1></center>
           <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+              <fieldset>
               {{ csrf_field() }}
 
               <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -44,6 +45,7 @@
                       </a>
                   </div>
               </div>
+          </fieldset>
           </form>
       </div>
   </div>

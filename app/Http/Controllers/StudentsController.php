@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 use App\User;
 
 class StudentsController extends Controller
@@ -41,9 +43,7 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'first_name'  => 'required',
-            'middle_name'  => 'required',
-            'last_name'  => 'required',
+            'password' =>'required|min:6|confirmed',
             'email' => 'required|email|max:255',
         ]);
 
@@ -104,6 +104,8 @@ class StudentsController extends Controller
         $student->gender = $request->input('gender');
         $student->address = $request->input('address');
         $student->email = $request->input('email');
+        $student->contact_no = $request->input('contact_no');
+        $student->birthdate = $request->input('birthdate');
         $student->save();
 
         // redirect
