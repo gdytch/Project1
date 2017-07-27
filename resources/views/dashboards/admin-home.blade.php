@@ -1,4 +1,3 @@
-@extends('layouts.admin')
 @section('dashboard-content')
 
 <!-- page content -->

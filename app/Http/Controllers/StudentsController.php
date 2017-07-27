@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-
+use Illuminate\Support\Facades\Storage;
+use Image;
 use App\User;
 
 class StudentsController extends Controller
@@ -21,7 +22,7 @@ class StudentsController extends Controller
     public function index()
     {
          $users = User::all();
-         return view('list.students')->with('users', $users);
+         return view('layouts.admin')->with('dashboardContent', 'list.students')->with('users', $users);
     }
 
     /**
@@ -44,11 +45,23 @@ class StudentsController extends Controller
     {
         $this->validate($request, [
             'password' =>'required|min:6|confirmed',
-            'email' => 'required|email|max:255',
+            'email' => 'email|max:255',
+            'avatar' => 'image',
         ]);
+
 
             // store
         $student = new User(Input::all());
+
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = $student->ID_no.".".$avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(500,500)->save(public_path('storage/avatars/'.$filename));
+            $student->avatar = $filename;
+        }else{
+            $student->avatar = 'default.jpg';
+        }
+
         $student->save();
 
         // redirect
@@ -77,7 +90,7 @@ class StudentsController extends Controller
     public function edit($id)
     {
         $student = User::find($id);
-        return view('forms.edit-student')->with('student', $student);
+        return view('layouts.admin')->with('dashboardContent', 'forms.edit-student')->with('student', $student);
     }
 
     /**
@@ -94,10 +107,19 @@ class StudentsController extends Controller
             'middle_name'  => 'required',
             'last_name'  => 'required',
             'email' => 'required|email|max:255',
+            'avatar' => 'image'
         ]);
+
 
             // store
         $student = User::find($id);
+
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = $student->ID_no.".".$avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(500,500)->save(public_path('storage/avatars/'.$filename));
+            $student->avatar = $filename;
+        }
         $student->first_name = $request->input('first_name');
         $student->middle_name = $request->input('middle_name');
         $student->last_name = $request->input('last_name');
@@ -106,11 +128,19 @@ class StudentsController extends Controller
         $student->email = $request->input('email');
         $student->contact_no = $request->input('contact_no');
         $student->birthdate = $request->input('birthdate');
-        $student->save();
+        $student->father_first_name = $request->input('father_first_name');
+        $student->father_last_name = $request->input('father_last_name');
+        $student->father_contact_no = $request->input('father_contact_no');
+        $student->mother_first_name = $request->input('mother_first_name');
+        $student->mother_last_name = $request->input('mother_last_name');
+        $student->mother_contact_no = $request->input('mother_contact_no');
+        $student->update();
+
+
 
         // redirect
         $message = 'Successfully Updated!';
-        return redirect('admin/student/')->withSuccess($message);
+        return redirect('/admin/student/profile/'.$student->id)->withSuccess($message);
     }
 
     /**

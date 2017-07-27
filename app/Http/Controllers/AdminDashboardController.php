@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\User;
 use App\Teacher;
 
@@ -25,7 +27,12 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboards.admin-home');
+        return view('layouts.admin')->with('dashboardContent', 'dashboards.admin-home');
+    }
+
+    public function studentProfile($id){
+        $student = User::find($id);
+        return view('layouts.admin')->with('dashboardContent','dashboards.student.profile')->with('student',$student);
     }
 
 }

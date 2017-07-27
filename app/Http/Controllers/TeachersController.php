@@ -21,7 +21,7 @@ class TeachersController extends Controller
     public function index()
     {
         $teachers = Teacher::all();
-        return view('list.teachers')->with('teachers', $teachers);
+        return view('layouts.admin')->with('dashboardContent', 'list.teachers')->with('teachers', $teachers);
     }
 
     /**
@@ -77,7 +77,7 @@ class TeachersController extends Controller
     public function edit($id)
     {
         $teacher = Teacher::find($id);
-        return view('forms.edit-teacher')->with('teacher', $teacher);
+        return view('layouts.admin')->with('dashboardContent', 'forms.edit-teacher')->with('teacher', $teacher);
     }
 
     /**

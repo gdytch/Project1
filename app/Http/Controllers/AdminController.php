@@ -25,14 +25,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('dashboards.admin-home');
-    }
-    public function list_students(){
-      $users = User::all();
-      return view('list.students')->with('users', $users);
-    }
-    public function list_teachers(){
-      $teachers = Teacher::all();
-      return view('list.teachers')->with('teachers', $teachers);
+        return view('layouts.admin')->with('dashboardContent', 'dashboards.admin-home');
     }
 }

@@ -9,14 +9,15 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{asset('storage/avatars/'.Auth::user()->avatar)}}" class="img-circle profile_img">
+                <img src="{{asset('storage/avatars/'.$student->avatar)}}" class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>{{Auth::user()->name}}</h2>
+                <h2>{{$student->first_name}} {{$student->last_name}}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
+
             <br />
 
             <!-- sidebar menu -->
@@ -26,9 +27,8 @@
                 <ul class="nav side-menu">
                   <li><a href="/"><i class="fa fa-home"></i> Home</span></a>
                   </li>
-                  <li><a href="/admin/student"><i class="fa fa-user"></i>Students</span></a></li>
-                  <li><a href="/admin/teacher"><i class="fa fa-user"></i>Teachers</span></a></li>
-
+                  <li><a href="#">Grades</a></li>
+                  <li><a href="#">Subjects</a></li>
                 </ul>
               </div>
             </div>

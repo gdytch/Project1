@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-primary">Register</button>
+                            <button type="submit" class="btn btn-success">Register</button>
                             <button class="btn btn-warning" onclick="collapse_toggle1()" type="button" >Cancel</button>
 
                         </div>

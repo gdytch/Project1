@@ -14,17 +14,22 @@ class AddStudentInformations extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('ID_no');
+            $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
             $table->char('gender')->nullable();
             $table->integer('age')->nullable();
-            $table->integer('year_level')->nullable();
-            $table->string('department_id')->nullable();
-            $table->string('major')->nullable();
             $table->longtext('address')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('contact_no')->nullable();
+
+            $table->string('ID_no');
+            $table->integer('year_level')->nullable();
+            $table->string('department_id')->nullable();
+            $table->string('major')->nullable();
+
+
+
             $table->string('father_first_name')->nullable();
             $table->string('father_last_name')->nullable();
             $table->string('father_contact_no')->nullable();
@@ -47,6 +52,7 @@ class AddStudentInformations extends Migration
             $table->dropColumn('ID_no')->unique();
             $table->dropColumn('middle_name');
             $table->dropColumn('last_name');
+            $table->dropColumn('first_name');
             $table->dropColumn('gender');
             $table->dropColumn('age');
             $table->dropColumn('year_level');

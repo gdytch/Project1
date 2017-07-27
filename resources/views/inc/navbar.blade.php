@@ -9,11 +9,19 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                 <img src="{{asset('images/img.jpg')}}" alt="">{{Auth::user()->name}}
+                 <img src="{{asset('storage/avatars/'.Auth::user()->avatar)}}" alt=""> {{Auth::user()->last_name}}
                  <span class=" fa fa-angle-down"></span>
                </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="javascript:;"> Profile</a></li>
+                        <li>
+                            @if(Auth::guard('admin')->check())
+                                <a href="#">Profile</a>
+                            @elseif (Auth::guard('web')->check())
+                                <a href="{{route('student.profile')}}">Profile</a>
+                            @elseif (Auth::guard('teacher')->check())
+                                <a href="#">Profile</a>
+                            @endif
+                        </li>
                         <li>
                             <a href="javascript:;">
                      <span class="badge bg-red pull-right">50%</span>

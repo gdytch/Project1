@@ -53,6 +53,10 @@ return [
             'driver' => 'session',
             'provider' => 'teachers',
         ],
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -85,6 +89,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Teacher::class,
         ],
+
 
         // 'users' => [
         //     'driver' => 'database',

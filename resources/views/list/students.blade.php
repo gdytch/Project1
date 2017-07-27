@@ -1,5 +1,3 @@
-@extends('layouts.admin')
-
 @section('dashboard-content')
   @if(count($users)  > 0)
     <div class="page-header">
@@ -18,6 +16,9 @@
           <th>Last Name</th>
           <th>Year Level</th>
           <th>Department</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
             <td>{{$user->last_name}}</td>
             <td>{{$user->year_level}}</td>
             <td>{{$user->department_id}}</td>
+            <td width="50"><a href="{{route('view.student.profile', $user->id)}}" class="btn btn-sm btn-info">View</a></td>
             <td width="50"><a href="{{route('student.edit',$user->id)}}" class="btn btn-sm btn-warning">Edit</a></td>
             <td width="50">
                 <form class="form-horizontal" method="POST" action="{{route('student.destroy', $user->id)}}">

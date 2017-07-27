@@ -28,6 +28,9 @@ Auth::routes();
 Route::group(['middleware' => 'auth:web'], function () {
     // All my routes that needs a logged in user
     Route::get('/dashboard', 'StudentDashboardController@index');
+    Route::prefix('student')->group(function(){
+        Route::get('/profile', 'StudentDashboardController@profile')->name('student.profile');
+    });
 });
 
 
@@ -45,6 +48,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::prefix('admin')->group(function(){
       Route::resource('student', 'StudentsController');
       Route::resource('teacher', 'TeachersController');
+      Route::get('student/profile/{id}' ,'AdminDashboardController@studentProfile')->name('view.student.profile');
     });
 
 });

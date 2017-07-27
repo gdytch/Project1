@@ -26,6 +26,11 @@ class StudentDashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('dashboards.student-home')->with('user', $user);
+        return view('layouts.student')->with('dashboardContent','dashboards.student.home')->with('student', $user);
+    }
+
+    public function profile(){
+        $user = Auth::user();
+        return view('layouts.student')->with('dashboardContent','dashboards.student.profile')->with('student', $user);
     }
 }

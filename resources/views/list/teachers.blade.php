@@ -1,5 +1,3 @@
-@extends('layouts.admin')
-
 @section('dashboard-content')
   @if(count($teachers)  > 0)
     <div class="page-header">
