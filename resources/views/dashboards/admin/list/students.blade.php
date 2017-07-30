@@ -10,7 +10,7 @@
 
         <div class="x_content">
         @if(count($users)  > 0)
-          <table class="table table-striped table-hover ">
+          <table class="table table-striped table-hover" id="DataTable">
             <thead>
             <tr>
               <th>ID</th>
@@ -19,9 +19,9 @@
               <th>Last Name</th>
               <th>Year Level</th>
               <th>Department</th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th class="nosort"></th>
+              <th class="nosort"></th>
+              <th class="nosort"></th>
             </tr>
             </thead>
             <tbody>

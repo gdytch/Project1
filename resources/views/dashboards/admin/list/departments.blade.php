@@ -10,14 +10,14 @@
       @if(count($departments)  > 0)
 
 
-          <table class="table table-striped table-hover ">
+          <table class="table table-striped table-hover" id="DataTable">
             <thead>
             <tr>
               <th>ID</th>
               <th>Department</th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th class="nosort"></th>
+              <th class="nosort"></th>
+              <th class="nosort"></th>
             </tr>
             </thead>
             <tbody>

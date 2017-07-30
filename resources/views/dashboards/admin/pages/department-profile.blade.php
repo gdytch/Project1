@@ -46,21 +46,19 @@
                       <div class="x_content" style="display: block;">
                         @if($department->students != null)
 
-                            <table class="table table-hover">
+                            <table class="table table-hover table-striped" id="DataTable">
                               <thead>
                                 <tr>
-                                  <th>#</th>
                                   <th>ID</th>
                                   <th>First Name</th>
                                   <th>Last Name</th>
                                   <th>Year Level</th>
-                                  <th></th>
+                                  <th class="nosort"></th>
                                 </tr>
                               </thead>
                               <tbody>
                               @foreach ($department->students as $key => $student)
                                 <tr>
-                                  <th scope="row">{{$key}}</th>
                                   <td>{{$student->ID_no}}</td>
                                   <td>{{$student->first_name}}</td>
                                   <td>{{$student->last_name}}</td>
@@ -82,4 +80,5 @@
 
 <!-- /page content -->
 @endif
+
 @endsection

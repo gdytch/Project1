@@ -38,10 +38,28 @@
 <script type="text/javascript" src="{{asset('plugins/moment/min/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('plugins/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <script type="text/javascript" src="{{asset('plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
+
+<!-- DataTables -->
+<script src="{{asset('/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+<script src="{{asset('/plugins/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>
+
 <!-- Custom Theme Scripts -->
 <script type="text/javascript" src="{{asset('js/ripples.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/material.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/framework-custom.min.js')}}"></script>
+
+
+
 
 <script type="text/javascript">
 $.material.init();
@@ -49,4 +67,13 @@ $.material.init();
 $('#myDatepickerBirthday').datetimepicker({
        format: 'YYYY-MM-DD'
    });
+
+$(document).ready(function(){
+   $('#DataTable').DataTable({
+       "columnDefs": [
+        { "orderable": false, "targets": "nosort" }
+      ]
+   });
+});
+
 </script>
