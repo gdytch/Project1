@@ -16,7 +16,7 @@
   </dv>
 @endif
 @if(session('error'))
-  <div class="aler alert-dismissible alert-danger">
+  <div class="alert alert-dismissible alert-danger">
       <button type="button" class="close" data-dismiss="alert">×</button>
     {{session('error')}}
   </div>

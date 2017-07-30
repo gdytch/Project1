@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Department;
 use Illuminate\Support\Facades\Input;
-use App\Teacher;
-use App\Http\Requests\CreateTeacherRequest;
-class TeachersController extends Controller
+
+
+class DepartmentsController extends Controller
 {
     public function __construct(){
         $this->middleware('auth:admin')->except('show');
 
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +20,8 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
-        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.list.teachers')->with('teachers', $teachers);
+        $departments = Department::all();
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.list.departments')->with('departments', $departments);
     }
 
     /**
@@ -31,7 +31,7 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        //Form in views\forms\add-teacher
+        // form in admin/departments
     }
 
     /**
@@ -42,19 +42,15 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-            $this->validate($request, [
-                'name'  => 'required',
-                'email' => 'required|email|max:255|unique:teachers',
-                'password' => 'required|min:6|confirmed'
-            ]);
+        $this->validate($request, [
+            'department_id' =>'required',
+            'department_name' => 'required',
+        ]);
 
-            // store
-            $teacher = new Teacher(Input::all());
-            $teacher->save();
-
-            // redirect
-            $message = 'Successfully registerd!';
-            return redirect()->back()->withSuccess($message);
+        $department = new Department(Input::all());
+        $department->save();
+        $message = 'Successfully Registered';
+        return redirect()->back()->withSuccess($message);
     }
 
     /**
@@ -65,7 +61,8 @@ class TeachersController extends Controller
      */
     public function show($id)
     {
-        //
+        $department = Department::find($id);
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.pages.department-profile')->with('department', $department);
     }
 
     /**
@@ -76,8 +73,8 @@ class TeachersController extends Controller
      */
     public function edit($id)
     {
-        $teacher = Teacher::find($id);
-        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.forms.edit-teacher')->with('teacher', $teacher);
+        $department = Department::find($id);
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.forms.edit-department')->with('department', $department);
     }
 
     /**
@@ -90,17 +87,14 @@ class TeachersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'  => 'required',
-            'email' => 'required|email|max:255',
+            'department_id' =>'required',
+            'department_name' => 'required',
         ]);
 
-        $teacher = Teacher::find($id);
-        $teacher->name  = $request->input('name');
-        $teacher->email = $request->input('email');
-        $teacher->save();
-
+        $department = Department::find($id);
+        $department->update(Input::all());
         $message = 'Successfully Updated!';
-        return redirect('admin/teacher/')->withSuccess($message);
+        return redirect('admin/department/'. $id)->withSuccess($message);
     }
 
     /**
@@ -111,11 +105,7 @@ class TeachersController extends Controller
      */
     public function destroy($id)
     {
-        $teacher = Teacher::find($id);
-        $teacher->delete();
-
-        $message = 'Teacher Deleted = ID:'.$id.' Name: '.$teacher->name.'';
-        return redirect()->back()->withSuccess($message);
+        $message = 'Not allowed';
+        return redirect()->back()->withError($message);
     }
-
 }

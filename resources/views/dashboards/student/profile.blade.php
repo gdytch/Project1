@@ -26,7 +26,8 @@
                             <br>
                             <ul class="list-unstyled user_data">
                                 <li><strong>Student ID </strong><h4 class="green">{{$student->ID_no}} </h4></li>
-                                <li><strong>Course </strong> <h4 class="green">{{$student->department}}<h4 class="green"> </li>
+                                <li><strong>Course </strong> <h4 class="green">{{$student->department->department_id}}</h4>
+                                    <h5 class="green">{{$student->department->department_name}}</h5> </li>
                                 @if($student->major != null)<li><i class="fa fa-briefcase user-profile-icon"></i> <strong>Major </strong><h4 class="green">{{$student->major}} </h4></li>@endif
                                 <li><strong>Year Level </strong><h4 class="green">{{$student->year_level}}</h4> </li>
                             </ul>

@@ -27,12 +27,12 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        return view('layouts.admin')->with('dashboardContent', 'dashboards.admin-home');
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.pages.home');
     }
 
     public function studentProfile($id){
         $student = User::find($id);
-        return view('layouts.admin')->with('dashboardContent','dashboards.student.profile')->with('student',$student);
+        return view('layouts.admin')->with('dashboard_content','dashboards.student.profile')->with('student',$student);
     }
 
 }

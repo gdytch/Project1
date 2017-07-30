@@ -25,6 +25,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('layouts.admin')->with('dashboardContent', 'dashboards.admin-home');
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.pages.home');
     }
 }

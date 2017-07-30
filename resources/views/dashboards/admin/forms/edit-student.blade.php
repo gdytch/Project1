@@ -44,10 +44,32 @@
                                   </div>
                               </li>
                             <li><strong>Student ID: </strong>{{$student->ID_no}} </li>
-                            <li><strong>Course: </strong>{{$student->department}} </li>
+                            <li><strong>Course: </strong>
+                                    <select name="department_id" id="department_id" class="form-control">
+                                        <option value="null" @if($student->department_id == null) selected @endif>--Select--</option>
+                                        @foreach ($departments as $department)
+                                            <option value="{{$department->department_id}}" @if($student->department_id == $department->department_id) selected @endif >{{$department->department_id}}</option>
+                                        @endforeach
+                                    </select>
+                            </li>
                             @if($student->major != null)
                             <li><strong>Major: </strong>{{$student->major}} </li>@endif
-                            <li><strong>Year Level: </strong>{{$student->year_level}} </li>
+                            <li><strong>Year Level: </strong>
+                                <select name="year_level" id="year_level" class="form-control">
+                                    <option value="0" @if($student->year_level == null) selected @endif>--Select--</option>
+                                    @php
+                                        if($student->department_id != null){
+                                            $years = $student->department->year_levels;
+                                            for ($i=1; $i <= $years; $i++) {
+                                                echo '<option value="'.$i.'"';
+                                                if($student->year_level == $i)
+                                                    echo 'selected';
+                                                echo '>'.$i.'</option>';
+                                            }
+                                        }
+                                    @endphp
+                                </select>
+                            </li>
                         </ul>
                     </div>
 
@@ -74,7 +96,7 @@
                                 </div>
                             </li>
                             <li><strong>Birthdate </strong>
-                                <div class="input-group col-md-6 date" id="myDatepickerBirthday">
+                                <div class="input-group date" id="myDatepickerBirthday">
                                     <input type="text" class="form-control input-group-addon" placeholder="YYYY-MM-DD" name="birthdate" value="{{ $student->birthdate }}" required>
                                     <span class="input-group-addon">
                                                         <span style="color: #BDBDBD" class="glyphicon glyphicon-calendar"></span>

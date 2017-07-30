@@ -7,7 +7,7 @@
         @include('inc.admin-sidebar')
         <div class="right_col" role="main" >
             @include('inc.messages')
-            @include($dashboardContent)
+            @include($dashboard_content)
             @yield('dashboard-content')
             <a href="{{url()->previous()}}" class="btn btn-primary">Back</a>
         </div>

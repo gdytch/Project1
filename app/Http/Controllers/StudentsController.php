@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use App\User;
+use App\Department;
 
 class StudentsController extends Controller
 {
@@ -22,7 +23,7 @@ class StudentsController extends Controller
     public function index()
     {
          $users = User::all();
-         return view('layouts.admin')->with('dashboardContent', 'list.students')->with('users', $users);
+         return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.list.students')->with('users', $users);
     }
 
     /**
@@ -32,7 +33,12 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        // Form is in views\forms\add-students
+        $data = array(
+            'dashboard_content' => 'dashboards.admin.forms.add-student',
+            'departments' => Department::all()->sortBy('department_id'),
+            'year_levels' => Department::all('year_levels')->unique('year_levels')->sortBy('year_levels')
+        );
+        return view('layouts.admin')->with($data);
     }
 
     /**
@@ -78,7 +84,8 @@ class StudentsController extends Controller
      */
     public function show($id)
     {
-        return $id;
+        $student = User::find($id);
+        return view('layouts.admin')->with('dashboard_content','dashboards.student.profile')->with('student',$student);
     }
 
     /**
@@ -90,7 +97,8 @@ class StudentsController extends Controller
     public function edit($id)
     {
         $student = User::find($id);
-        return view('layouts.admin')->with('dashboardContent', 'forms.edit-student')->with('student', $student);
+        $departments = Department::all();
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.forms.edit-student')->with('student', $student)->with('departments', $departments);
     }
 
     /**
@@ -120,21 +128,8 @@ class StudentsController extends Controller
             Image::make($avatar)->resize(500,500)->save(public_path('storage/avatars/'.$filename));
             $student->avatar = $filename;
         }
-        $student->first_name = $request->input('first_name');
-        $student->middle_name = $request->input('middle_name');
-        $student->last_name = $request->input('last_name');
-        $student->gender = $request->input('gender');
-        $student->address = $request->input('address');
-        $student->email = $request->input('email');
-        $student->contact_no = $request->input('contact_no');
-        $student->birthdate = $request->input('birthdate');
-        $student->father_first_name = $request->input('father_first_name');
-        $student->father_last_name = $request->input('father_last_name');
-        $student->father_contact_no = $request->input('father_contact_no');
-        $student->mother_first_name = $request->input('mother_first_name');
-        $student->mother_last_name = $request->input('mother_last_name');
-        $student->mother_contact_no = $request->input('mother_contact_no');
-        $student->update();
+
+        $student->update(Input::all());
 
 
 

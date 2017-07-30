@@ -26,6 +26,8 @@
                 <ul class="nav side-menu">
                   <li><a href="/"><i class="fa fa-home"></i> Home</span></a>
                   </li>
+                  <li><a href="/admin/department"><i class="fa fa-graduation-cap"></i>Departments</span></a></li>
+
                   <li><a href="/admin/student"><i class="fa fa-user"></i>Students</span></a></li>
                   <li><a href="/admin/teacher"><i class="fa fa-user"></i>Teachers</span></a></li>
 

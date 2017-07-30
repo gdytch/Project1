@@ -4645,3 +4645,10 @@ ul.notifications {
 .dataTables_wrapper>.row {
     overflow: auto!important
 }
+
+
+
+
+td .btn{
+    margin: 0px;
+}

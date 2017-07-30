@@ -1,4 +1,5 @@
-<div class="collapse" id="add-student-form">
+@section('dashboard-content')
+
 <style>
     .form-group{
         margin: 0px;
@@ -7,7 +8,6 @@
         margin-top: 30px;
     }
 </style>
-    <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
                 <h2>Register Student</h2>
@@ -52,11 +52,23 @@
                                     <span class="help-block"><strong>{{ $errors->first('ID_no') }}</strong></span> @endif
                                 </div>
                             </li>
-                            <li><strong>Course </strong>    </li>
+                            <li><strong>Course </strong>
+                                <select name="department_id" id="department_id" class="form-control">
+                                    <option value="null" selected>--Select--</option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{$department->department_id}}" >{{$department->department_id}}</option>
+                                    @endforeach
+                                </select>
+                            </li>
                             {{-- @if(old('major != null)
                             <li><strong>Major: </strong>{{old('major}} </li>@endif --}}
                             <li><strong>Year Level </strong>
-
+                                <select name="year_level" id="department_id" class="form-control">
+                                    <option value="0" selected>--Select--</option>
+                                    @foreach ($year_levels as $item)
+                                        <option value="{{$item->year_levels}}" >{{$item->year_levels}}</option>
+                                    @endforeach
+                                </select>
                             </li>
                             <li><strong>Password</strong>
                                 <input id="password" type="password" class="form-control" name="password" required> @if ($errors->has('password'))
@@ -91,7 +103,7 @@
                                 </div>
                             </li>
                             <li><strong>Birthdate </strong>
-                                <div class="input-group col-md-6 date" id="myDatepickerBirthday">
+                                <div class="input-group date" id="myDatepickerBirthday">
                                     <input type="text" class="form-control input-group-addon" placeholder="YYYY-MM-DD" name="birthdate" value="{{ old('birthdate') }}" required>
                                     <span class="input-group-addon">
                                                         <span style="color: #BDBDBD" class="glyphicon glyphicon-calendar"></span>
@@ -193,17 +205,13 @@
                             <button type="submit" class="btn btn-primary">
                                 Register
                             </button>
-                            <button class="btn btn-warning" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-student-form" aria-expanded="false" aria-controls="add-student-form">Cancel</button>
+                            <a class="btn btn-warning" type="button"href="/admin/student" aria-expanded="false" aria-controls="add-student-form">Cancel</a>
                         </div>
 
                     </div>
                 </div>
             </form>
         </div>
-    </div>
-</div>
 
 
-<div class="collapse" id="add-student-batchform">
-Batch
-</div>
+@endsection

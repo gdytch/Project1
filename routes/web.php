@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::prefix('admin')->group(function(){
       Route::resource('student', 'StudentsController');
       Route::resource('teacher', 'TeachersController');
+      Route::resource('department', 'DepartmentsController');
       Route::get('student/profile/{id}' ,'AdminDashboardController@studentProfile')->name('view.student.profile');
     });
 

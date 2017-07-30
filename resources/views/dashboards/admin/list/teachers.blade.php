@@ -1,14 +1,13 @@
 @section('dashboard-content')
-  @if(count($teachers)  > 0)
-    <div class="page-header">
-       <h1 id="tables">Teachers <button class="btn btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-teacher-form" aria-expanded="false" aria-controls="add-teacher-form">Add</button>
-        <button class="btn btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-teacher-batchform" aria-expanded="false" aria-controls="add-teacher-batchform">Add Batch</button></h1>
-
+<h1 class="page-header">Teachers</h1>
+<div class="x_panel">
+    <div class="x_title">
+       <button class="btn btn-sm btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-teacher-form" aria-expanded="false" aria-controls="add-teacher-form">Add</button>
+        <button class="btn btn-sm btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-teacher-batchform" aria-expanded="false" aria-controls="add-teacher-batchform">Add Batch</button>
     </div>
-      @include('forms.add-teacher')
-
-
-    <div class="bs-component">
+      @include('dashboards.admin.forms.add-teacher')
+    <div class="x_content">
+        @if(count($teachers)  > 0)
       <table class="table table-striped table-hover ">
         <thead>
         <tr>
@@ -49,8 +48,9 @@
         @endforeach
       </tbody>
     </table>
+    @else
+        <h1>No Student</h1>
+    @endif
   </div>
-  @else
-    <h1>No Student</h1>
-  @endif
+</div>
 @endsection

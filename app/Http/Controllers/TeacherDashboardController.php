@@ -23,6 +23,6 @@ class TeacherDashboardController extends Controller
      */
     public function index()
     {
-        return view('layouts.teacher')->with('dashboardContent', 'dashboards.teacher-home');
+        return view('layouts.teacher')->with('dashboard_content', 'dashboards.teacher-home');
     }
 }

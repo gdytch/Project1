@@ -20,7 +20,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
-        'ID_no', 
+        'ID_no',
         'gender',
         'age',
         'year_level',
@@ -35,6 +35,7 @@ class User extends Authenticatable
         'mother_first_name',
         'mother_last_name',
         'mother_contact_no',
+        'avatar'
     ];
 
     /**
@@ -48,5 +49,9 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function department(){
+        return $this->belongsTo('App\Department', 'department_id', 'department_id');
     }
 }
