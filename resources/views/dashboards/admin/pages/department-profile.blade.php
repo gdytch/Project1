@@ -1,5 +1,6 @@
 @section('dashboard-content')
 @if(count($department) > 0)
+    {!! Breadcrumbs::render('admin.department.show', $department)!!}
 <!-- page content -->
     <h1 class="page-header">{{$department->department_name}}</h1>
     <!-- top tiles -->

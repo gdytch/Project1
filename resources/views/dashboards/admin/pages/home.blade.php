@@ -1,5 +1,6 @@
 @section('dashboard-content')
-
+{!!Breadcrumbs::render('admin')!!}
+<h1 class="page-header">Home</h1>
 <!-- page content -->
     <!-- top tiles -->
     <div class="row tile_count">

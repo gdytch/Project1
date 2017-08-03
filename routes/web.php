@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function(){
 //Admin Only Routes
 Route::group(['middleware' => 'auth:admin'], function () {
     // All my routes that needs a logged in admin
-    Route::get('/admin', 'AdminDashboardController@index');
+    Route::get('/admin', 'AdminDashboardController@index')->name('admin');
     Route::prefix('admin')->group(function(){
       Route::resource('student', 'StudentsController');
       Route::resource('teacher', 'TeachersController');

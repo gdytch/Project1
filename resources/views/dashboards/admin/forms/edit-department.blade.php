@@ -1,4 +1,5 @@
 @section('dashboard-content')
+    {!! Breadcrumbs::render('admin.department.edit', $department)!!}
     <h1 class="page-header">Edit Department</h1>
     <div class="x_panel">
         <div class="x_content">

@@ -69,11 +69,19 @@ $('#myDatepickerBirthday').datetimepicker({
    });
 
 $(document).ready(function(){
-   $('#DataTable').DataTable({
+   $('#DataTable').DataTable(
+       {
        "columnDefs": [
         { "orderable": false, "targets": "nosort" }
-      ]
+
+        ]
    });
+});
+
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
 });
 
 </script>

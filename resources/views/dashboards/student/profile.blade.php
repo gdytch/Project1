@@ -36,11 +36,10 @@
                             <h3>Student Details</h3>
                             <hr>
                             <ul class="list-unstyled user_data">
-                                <li><strong>First name </strong><h4 class="green">{{$student->first_name}} </h4></li>
-                                <li><strong>Middle name </strong><h4 class="green">{{$student->middle_name}} </h4></li>
-                                <li><strong>Last name </strong><h4 class="green">{{$student->last_name}} </h4></li>
+                                <li><strong>First name </strong><h4 class="green">{{$student->first_name}} {{$student->middle_name}} {{$student->last_name}}</h4></li>
                                 <li><strong>Birthdate </strong><h4 class="green">{{$student->birthdate}} </h4></li>
-                                <li><strong>Age </strong><h4 class="green"> </h4></li>
+
+                                <li><strong>Age </strong><h4 class="green"> @php echo $age = date_diff(date_create($student->birthdate), date_create('now'))->y; @endphp </h4></li>
                                 <li><strong>Gender </strong><h4 class="green">@if($student->gender == 'm') Male @else Female @endif </h4></li>
                                 <li><strong>Home Address </strong><h4 class="green">{{$student->address}} </h4></li>
                                 <li><strong>Email Address </strong><h4 class="green">{{$student->email}} </h4></li>

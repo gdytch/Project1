@@ -1,13 +1,11 @@
 @section('dashboard-content')
+{!! Breadcrumbs::render('admin.student.edit', $student)!!}
+<h1 class="page-header">Edit Student</h1>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Edit Student {{$student->ID_no}}</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                </ul>
+                <h2> {{$student->ID_no}}</h2>
                 <div class="clearfix"></div>
             </div>
             <style>

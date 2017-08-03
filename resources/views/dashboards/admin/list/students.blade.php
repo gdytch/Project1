@@ -17,23 +17,21 @@
               <th>First Name</th>
               <th>Middle Name</th>
               <th>Last Name</th>
-              <th>Year Level</th>
+              <th class="default-order">Year Level</th>
               <th>Department</th>
-              <th class="nosort"></th>
               <th class="nosort"></th>
               <th class="nosort"></th>
             </tr>
             </thead>
             <tbody>
             @foreach ($users as $user)
-              <tr>
+              <tr class="clickable-row" data-href="{{route('view.student.profile', $user->id)}}">
                 <td>{{$user->ID_no}}</td>
                 <td>{{$user->first_name}}</td>
                 <td>{{$user->middle_name}}</td>
                 <td>{{$user->last_name}}</td>
                 <td>{{$user->year_level}}</td>
                 <td>{{$user->department_id}}</td>
-                <td width="50"><a href="{{route('view.student.profile', $user->id)}}" class="btn btn-sm btn-info">View</a></td>
                 <td width="50"><a href="{{route('student.edit',$user->id)}}" class="btn btn-sm btn-warning">Edit</a></td>
                 <td width="50">
                     <form class="form-horizontal" method="POST" action="{{route('student.destroy', $user->id)}}">

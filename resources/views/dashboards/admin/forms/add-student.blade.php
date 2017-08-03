@@ -1,5 +1,5 @@
 @section('dashboard-content')
-
+{!! Breadcrumbs::render('admin.student.create')!!}
 <style>
     .form-group{
         margin: 0px;

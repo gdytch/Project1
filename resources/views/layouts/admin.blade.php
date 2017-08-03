@@ -9,7 +9,6 @@
             @include('inc.messages')
             @include($dashboard_content)
             @yield('dashboard-content')
-            <a href="{{url()->previous()}}" class="btn btn-primary">Back</a>
         </div>
     </div>
 

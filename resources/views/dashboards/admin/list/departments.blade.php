@@ -1,9 +1,11 @@
 @section('dashboard-content')
+{!! Breadcrumbs::render('admin.department.index')!!}
 <h1 class="page-header">Departments</h1>
 <div class="x_panel">
     <div class="x_title">
       <button class="btn btn-sm btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-department-form" aria-expanded="false" aria-controls="add-department-form">Add</button>
         <button class="btn btn-sm btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-department-batchform" aria-expanded="false" aria-controls="add-department-batchform">Add Batch</button>
+
     </div>
       @include('dashboards.admin.forms.add-department')
       <div class="x_content">
@@ -17,15 +19,13 @@
               <th>Department</th>
               <th class="nosort"></th>
               <th class="nosort"></th>
-              <th class="nosort"></th>
             </tr>
             </thead>
             <tbody>
             @foreach ($departments as $department)
-              <tr>
+              <tr class="clickable-row" data-href="{{route('department.show', $department->id)}}">
                 <td>{{$department->department_id}}</td>
                 <td>{{$department->department_name}}</td>
-                <td width="50"><a href="{{route('department.show', $department->id)}}" class="btn btn-sm btn-info">View</a></td>
                 <td width="50"><a href="{{route('department.edit',$department->id)}}" class="btn btn-sm btn-warning">Edit</a></td>
                 <td width="50">
                     <form class="form-horizontal" method="POST" action="{{route('department.destroy', $department->id)}}">
