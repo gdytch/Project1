@@ -303,8 +303,9 @@ s}
 }
 
 .profile_avatar{
-    width: 150px;
+    width: 100%;
     height: auto;
+    float: right;
 }
 
 .img-circle.profile_img {
@@ -4663,4 +4664,32 @@ td .btn{
 
 .page-header{
     margin: 10px 0 20px;
+}
+
+table.profile td:first-child{
+    padding-right: 50px;
+
+}
+
+table.profile td{
+    vertical-align: text-top;
+}
+
+img.profile_avatar{
+    max-width: 300px;
+}
+
+.nav-tabs {
+    background: none;
+    box-shadow: none;
+}
+
+.profile-label strong{
+    display: block;
+    float: left;
+}
+.profile-label span{
+    border-bottom: 1px solid;
+    display: block;
+    float: left;
 }

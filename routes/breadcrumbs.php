@@ -42,11 +42,36 @@ Breadcrumbs::register('admin.student.create', function($breadcrumbs) {
     $breadcrumbs->push('Create Student', route('student.create'));
 });
 
-//Admin > student Profile
+//Admin > student edit
 Breadcrumbs::register('admin.student.edit', function($breadcrumbs, $student) {
     $breadcrumbs->parent('admin.student.index');
     $breadcrumbs->push('Edit Student', route('student.edit', $student->id));
 });
+
+//Admin > student profile
+Breadcrumbs::register('admin.student.show', function($breadcrumbs, $student) {
+    $breadcrumbs->parent('admin.student.index');
+    $breadcrumbs->push($student->ID_no, route('student.show', $student->id));
+});
+
+//Admin > teacher index
+Breadcrumbs::register('admin.teacher.index', function($breadcrumbs){
+    $breadcrumbs->parent('admin');
+    $breadcrumbs->push('Teacher List', route('teacher.index'));
+});
+
+//Admin > teacher create
+Breadcrumbs::register('admin.teacher.create', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.teacher.index');
+    $breadcrumbs->push('Create Teacher', route('teacher.create'));
+});
+
+//Admin > teacher edit
+Breadcrumbs::register('admin.teacher.show', function($breadcrumbs, $teacher) {
+    $breadcrumbs->parent('admin.teacher.index');
+    $breadcrumbs->push($teacher->ID_no, route('teacher.show', $teacher->id));
+});
+
 
 // |        | GET|HEAD  | admin/teacher                      | teacher.index        | App\Http\Controllers\TeachersController@index                          | web,auth:admin    |
 // |        | POST      | admin/teacher                      | teacher.store        | App\Http\Controllers\TeachersController@store                          | web,auth:admin    |

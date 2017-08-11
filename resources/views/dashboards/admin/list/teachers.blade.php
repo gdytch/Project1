@@ -1,4 +1,5 @@
 @section('dashboard-content')
+{!! Breadcrumbs::render('admin.teacher.index') !!}
 <h1 class="page-header">Teachers</h1>
 <div class="x_panel">
     <div class="x_title">
