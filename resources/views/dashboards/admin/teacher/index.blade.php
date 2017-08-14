@@ -6,7 +6,7 @@
        <button class="btn btn-sm btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-teacher-form" aria-expanded="false" aria-controls="add-teacher-form">Add</button>
         <button class="btn btn-sm btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-teacher-batchform" aria-expanded="false" aria-controls="add-teacher-batchform">Add Batch</button>
     </div>
-      @include('dashboards.admin.forms.add-teacher')
+      @include('dashboards.admin.teacher.add')
     <div class="x_content">
         @if(count($teachers)  > 0)
       <table class="table table-striped table-hover" id="DataTable">

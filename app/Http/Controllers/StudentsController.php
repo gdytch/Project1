@@ -23,7 +23,7 @@ class StudentsController extends Controller
     public function index()
     {
          $users = User::all();
-         return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.list.students')->with('users', $users);
+         return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.student.index')->with('users', $users);
     }
 
     /**
@@ -34,7 +34,7 @@ class StudentsController extends Controller
     public function create()
     {
         $data = array(
-            'dashboard_content' => 'dashboards.admin.forms.add-student',
+            'dashboard_content' => 'dashboards.admin.student.add',
             'departments' => Department::all()->sortBy('department_id'),
             'year_levels' => Department::all('year_levels')->unique('year_levels')->sortBy('year_levels')
         );
@@ -98,7 +98,7 @@ class StudentsController extends Controller
     {
         $student = User::find($id);
         $departments = Department::all();
-        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.forms.edit-student')->with('student', $student)->with('departments', $departments);
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.student.edit')->with('student', $student)->with('departments', $departments);
     }
 
     /**

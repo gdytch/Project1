@@ -7,7 +7,7 @@
         <button class="btn btn-sm btn-primary" onclick="collapse_toggle1()" type="button" data-toggle="collapse" href="#add-department-batchform" aria-expanded="false" aria-controls="add-department-batchform">Add Batch</button>
 
     </div>
-      @include('dashboards.admin.forms.add-department')
+      @include('dashboards.admin.department.add')
       <div class="x_content">
       @if(count($departments)  > 0)
 

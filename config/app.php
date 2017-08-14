@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -178,6 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -229,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

@@ -21,7 +21,7 @@ class DepartmentsController extends Controller
     public function index()
     {
         $departments = Department::all();
-        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.list.departments')->with('departments', $departments);
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.department.index')->with('departments', $departments);
     }
 
     /**
@@ -74,7 +74,7 @@ class DepartmentsController extends Controller
     public function edit($id)
     {
         $department = Department::find($id);
-        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.forms.edit-department')->with('department', $department);
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.department.edit')->with('department', $department);
     }
 
     /**
