@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
       Route::resource('teacher', 'TeachersController');
       Route::resource('department', 'DepartmentsController');
       Route::get('student/profile/{id}' ,'AdminDashboardController@studentProfile')->name('view.student.profile');
+      Route::get('test', 'AdminDashboardController@test')->name('admin.test');
+      Route::post('runtest', 'AdminDashboardController@run_test')->name('admin.run.test');
     });
 
 });

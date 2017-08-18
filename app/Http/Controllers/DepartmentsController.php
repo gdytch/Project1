@@ -62,7 +62,7 @@ class DepartmentsController extends Controller
     public function show($id)
     {
         $department = Department::find($id);
-        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.pages.department-profile')->with('department', $department);
+        return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.department.profile')->with('department', $department);
     }
 
     /**

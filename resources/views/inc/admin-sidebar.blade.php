@@ -31,11 +31,15 @@
                   <li><a href="/admin/teacher"><i class="fa fa-user"></i>Teachers</span></a></li>
 
                 </ul>
+                <h3>Admin</h3>
+                <ul class="nav side-menu">
+                    <li><a href="/admin/test"><i class="fa fa-code"></i>Test</span></a></li>
+                </ul>
               </div>
             </div>
             <!-- /sidebar menu -->
 
-            <!-- /menu footer buttons -->
+            {{-- <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -50,6 +54,6 @@
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
-            <!-- /menu footer buttons -->
+            <!-- /menu footer buttons --> --}}
           </div>
         </div>
