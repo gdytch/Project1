@@ -16,13 +16,13 @@
 
 
 </head>
-<body class="nav-md">
+<body class="nav-md ">
     <div class="container body">
         <div class="main_container">
             <div style="margin-top:100px">
                 @include('inc.navbar')
                 @yield('content')
-                @include('inc.footer')
+                {{-- @include('inc.footer') --}}
 
             </div>
         </div>

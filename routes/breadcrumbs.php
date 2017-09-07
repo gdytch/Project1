@@ -67,31 +67,52 @@ Breadcrumbs::register('admin.teacher.create', function($breadcrumbs) {
 });
 
 //Admin > teacher edit
+Breadcrumbs::register('admin.teacher.edit', function($breadcrumbs, $teacher) {
+    $breadcrumbs->parent('admin.teacher.index');
+    $breadcrumbs->push($teacher->ID_no, route('teacher.edit', $teacher->id));
+});
+
+//Admin > teacher show
 Breadcrumbs::register('admin.teacher.show', function($breadcrumbs, $teacher) {
     $breadcrumbs->parent('admin.teacher.index');
     $breadcrumbs->push($teacher->ID_no, route('teacher.show', $teacher->id));
 });
 
 
-// |        | GET|HEAD  | admin/teacher                      | teacher.index        | App\Http\Controllers\TeachersController@index                          | web,auth:admin    |
-// |        | POST      | admin/teacher                      | teacher.store        | App\Http\Controllers\TeachersController@store                          | web,auth:admin    |
-// |        | GET|HEAD  | admin/teacher/create               | teacher.create       | App\Http\Controllers\TeachersController@create                         | web,auth:admin    |
-// |        | GET|HEAD  | admin/teacher/{teacher}            | teacher.show         | App\Http\Controllers\TeachersController@show                           | web,auth:admin    |
-// |        | PUT|PATCH | admin/teacher/{teacher}            | teacher.update       | App\Http\Controllers\TeachersController@update                         | web,auth:admin    |
-// |        | DELETE    | admin/teacher/{teacher}            | teacher.destroy      | App\Http\Controllers\TeachersController@destroy                        | web,auth:admin    |
-// |        | GET|HEAD  | admin/teacher/{teacher}/edit       | teacher.edit         | App\Http\Controllers\TeachersController@edit                           | web,auth:admin    |
-// |        | GET|HEAD  | api/user                           |                      | Closure                                                                | api,auth:api      |
-// |        | GET|HEAD  | dashboard                          |                      | App\Http\Controllers\StudentDashboardController@index                  | web,auth:web,auth |
-// |        | POST      | login                              |                      | App\Http\Controllers\Auth\LoginController@login                        | web,guest         |
-// |        | GET|HEAD  | login                              | login                | App\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest         |
-// |        | POST      | logout                             | logout               | App\Http\Controllers\Auth\LoginController@logout                       | web               |
-// |        | POST      | password/email                     | password.email       | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest         |
-// |        | POST      | password/reset                     |                      | App\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest         |
-// |        | GET|HEAD  | password/reset                     | password.request     | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest         |
-// |        | GET|HEAD  | password/reset/{token}             | password.reset       | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest         |
-// |        | POST      | register                           |                      | App\Http\Controllers\Auth\RegisterController@register                  | web,auth:admin    |
-// |        | GET|HEAD  | register                           | register             | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,auth:admin    |
-// |        | GET|HEAD  | student/profile                    | student.profile      | App\Http\Controllers\StudentDashboardController@profile                | web,auth:web,auth |
-// |        | GET|HEAD  | teacher                            |                      | App\Http\Controllers\TeacherDashboardController@index                  | web,auth:teacher  |
-// |        | GET|HEAD  | teacher/login                      | teacher.login        | App\Http\Controllers\Auth\TeacherLoginController@showLoginForm         | web,guest         |
-// |        | POST      | teacher/login                      | teacher.login.submit | App\Http\Controllers\Auth\TeacherLoginController@login                 | web,guest  
+
+//Admin > subject index
+Breadcrumbs::register('admin.subject.index', function($breadcrumbs) {
+    $breadcrumbs->parent('admin');
+    $breadcrumbs->push('Subject List', route('subject.index'));
+});
+
+//Admin > subject create
+Breadcrumbs::register('admin.subject.create', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.subject.index');
+    $breadcrumbs->push('Add Subject', route('subject.create'));
+});
+
+//Admin > subject create
+Breadcrumbs::register('admin.subject.bulkcreate', function($breadcrumbs) {
+    $breadcrumbs->parent('admin.subject.create');
+    $breadcrumbs->push('Bulk Add', route('subject.bulkcreate'));
+});
+
+//Admin > subject show
+Breadcrumbs::register('admin.subject.show', function($breadcrumbs, $subject) {
+    $breadcrumbs->parent('admin.subject.index');
+    $breadcrumbs->push($subject->course_id, route('subject.show', $subject->id));
+});
+
+//Admin > subject edit
+Breadcrumbs::register('admin.subject.edit', function($breadcrumbs, $subject) {
+    $breadcrumbs->parent('admin.subject.index');
+    $breadcrumbs->push('Edit', route('subject.edit', $subject->id));
+});
+
+// |        | GET|HEAD  | admin/subject/{subject}            | subject.show         | App\Http\Controllers\SubjectsController@show                           | web,auth:admin    |
+// |        | DELETE    | admin/subject/{subject}            | subject.destroy      | App\Http\Controllers\SubjectsController@destroy                        | web,auth:admin    |
+//
+// |        | PUT|PATCH | admin/subject/{subject}            | subject.update       | App\Http\Controllers\SubjectsController@update                         | web,auth:admin    |
+// |        | GET|HEAD  | admin/subject/{subject}/edit       | subject.edit         | App\Http\Controllers\SubjectsController@edit                           | web,auth:admin    |
+//

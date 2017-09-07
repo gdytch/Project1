@@ -15,12 +15,12 @@ class Subjects extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('COURSE_ID');
-            $table->string('COURSE_DESCRIPTION');
-            $table->string('CLASSROOM')->nullable();
-            $table->string('INSTRUCTOR')->nullable();
+            $table->string('course_id');
+            $table->string('course_description');
+            $table->string('classroom')->nullable();
+            $table->string('instructor')->nullable();
             $table->string('timeslot')->nullable();
-            $table->foreign('INSTRUCTOR')->references('id')->on('teachers');
+            $table->foreign('instructor')->references('id')->on('teachers');
             $table->string('SY_id')->nullable();
             $table->string('SEM_id')->nullable();
             $table->timestamps();

@@ -20,12 +20,12 @@
 
                     <table class="profile">
                         <tbody>
-                            <tr> <td padding="10"><strong>Student ID </strong> </td> <td> <p class="green">{{$student->ID_no}} </p></td></tr>
-                            <tr> <td><strong>Course </strong> </td> <td> <p class="green">{{$student->department->department_id}}</p><h6 class="green">{{$student->department->department_name}}</h6> </td></tr>
+                            <tr> <td>Student ID  </td> <td> <p class="green">{{$student->ID_no}} </p></td></tr>
+                            <tr> <td>Course  </td> <td> <p class="green">{{$student->department->department_id}}</p><h6 class="green">{{$student->department->department_name}}</h6> </td></tr>
                             @if($student->major != null)
-                                <tr> <td><strong>Major </strong></td> <td><p class="green">{{$student->major}} </p></td> </tr>
+                                <tr> <td>Major </td> <td><p class="green">{{$student->major}} </p></td> </tr>
                             @endif
-                            <tr><td><strong>Year Level  </strong></td> <td><p class="green">{{$student->year_level}}</p> </td> </tr>
+                            <tr><td>Year Level  </td> <td><p class="green">{{$student->year_level}}</p> </td> </tr>
                         </tbody>
                     </table>
                 </div>
@@ -50,27 +50,27 @@
                     <div role="tabpanel" class="tab-pane active" id="home">
                         <div >
                             <br>
-                            <h5><strong>Student Details</strong> </h5>
+                            <h5>Student Details </h5>
                             <br>
                             <table class="profile">
                                 <tbody>
                                     <tr>
-                                        <td><strong>Birthdate </strong></td><td><p class="green">{{$student->birthdate}} </p></td>
+                                        <td>Birthdate </td><td>{{$student->birthdate}} </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Age </strong></td><td><p class="green"> @php echo $age = date_diff(date_create($student->birthdate), date_create('now'))->y; @endphp </p></td>
+                                        <td>Age </td><td> @php echo $age = date_diff(date_create($student->birthdate), date_create('now'))->y; @endphp </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Gender </strong></td><td><p class="green">@if($student->gender == 'm') Male @else Female @endif </p></td>
+                                        <td>Gender </td><td>@if($student->gender == 'm') Male @else Female @endif </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Home Address </strong></td><td><p class="green">{{$student->address}} </p></td>
+                                        <td>Home Address </td><td>{{$student->address}} </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Email Address </strong></td><td><p class="green">{{$student->email}} </p></td>
+                                        <td>Email Address </td><td>{{$student->email}} </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Contact </strong></td><td><p class="green">{{$student->contact_no}} </p></td>
+                                        <td>Contact </td><td>{{$student->contact_no}} </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -83,16 +83,16 @@
                             <table class="profile">
                                 <tbody>
                                     <tr>
-                                        <td><strong>Father </strong></td><td><p class="green">{{$student->father_first_name}} {{$student->father_last_name}} </p></td>
+                                        <td>Father </td><td>{{$student->father_first_name}} {{$student->father_last_name}} </td>
                                     </tr>
                                     <tr>
-                                        <td><strong> Contact </strong></td><td><p class="green">{{$student->father_contact_no}}</p></td>
+                                        <td> Contact </td><td>{{$student->father_contact_no}}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Mother </strong></td><td><p class="green">{{$student->mother_first_name}} {{$student->mother_last_name}} </p></td>
+                                        <td>Mother </td><td>{{$student->mother_first_name}} {{$student->mother_last_name}} </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Contact </strong></td><td><p class="green">{{$student->mother_contact_no}}</p></td>
+                                        <td>Contact </td><td>{{$student->mother_contact_no}}</td>
                                     </tr>
                                 </tbody>
                             </table>

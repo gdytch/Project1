@@ -17,17 +17,24 @@
               Register
           </button>
     </form>
-
+ @if (isset($results))
     <div class="row">
-        @if (isset($results))
-            <table class="table table-striped">
+      <div class="x_panel">
+        <div class="x_content">
+           <table class="table table-striped">
                 <tbody>
-                    <th>Course Id</th>	<th>Course Description</th>	<th>Classroom</th>	<th>Instructor</th>	<th>Students</th>
+                    <th>Course Id</th>  <th>Course Description</th> <th>Classroom</th>  <th>Instructor</th> <th>Students</th>
                     @foreach ($results as $result)
-                        <td>{{$result->COURSE_ID}}</td><td>{{$result->course_description}}</td><td>{{$result->classroom}}</td><td>{{$result->instructor}}</td><td>{{$result->students}}</td>
+                        <tr>
+                        <td>{{$result->course_id}}</td><td>{{$result->course_description}}</td><td>{{$result->classroom}}</td><td>{{$result->instructor}}</td></tr>
                     @endforeach
                 </tbody>
             </table>
-        @endif
+        </div>
+      </div>
+       
+           
     </div>
+        @endif
+    
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\User;
 use App\Teacher;
+use App\Subject;
 use Excel;
 
 class AdminDashboardController extends Controller
@@ -37,23 +38,24 @@ class AdminDashboardController extends Controller
     }
 
     public function test(){
-
-            return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.pages.test');
+            $f = ['course_id' => 'AA' , 'course_description' => 'SVDSD'];
+            $result = Subject::where($f)->get();
+            echo count($result);
+            foreach ($result as $key => $value) {
+                echo $value->course_id." ".$value->course_description."<br>";
+            }
 
     }
     public function run_test(Request $request){
         if($request->hasFile('file')){
             $file = $request->file('file');
 
-             Excel::load($file, function($reader) {
+            $results = Excel::load($file, function($reader) {
+            })->get();
 
-                // Getting all results
+                  //return $results;
+          return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.pages.test')->with('results', $results);
 
-                  $results = $reader->get();
-
-                  return $results;
-
-            });
             //return view('layouts.admin')->with('dashboard_content', 'dashboards.admin.pages.test')->with('results', $results);
         }else{
             echo "no file";

@@ -5,7 +5,7 @@
 
     <div style="margin-top: -100px;">
         @include('inc.admin-sidebar')
-        <div class="right_col" role="main" >
+        <div class="right_col" role="main"  style="min-height: auto !important">
             @include('inc.messages')
             @include($dashboard_content)
             @yield('dashboard-content')

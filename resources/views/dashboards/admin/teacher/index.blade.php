@@ -41,7 +41,7 @@
                        data-btn-cancel-label="No"
                        data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
                        data-btn-cancel-class="btn-danger btn-sm"
-                       data-content="Delete student = {{$teacher->name}}?">Delete</submit>
+                       data-content="Delete teacher = {{$teacher->name}}?">Delete</submit>
 
                    </form>
               </td>

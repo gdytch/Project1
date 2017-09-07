@@ -29,6 +29,7 @@
 
                   <li><a href="/admin/student"><i class="fa fa-user"></i>Students</span></a></li>
                   <li><a href="/admin/teacher"><i class="fa fa-user"></i>Teachers</span></a></li>
+                  <li><a href="/admin/subject"><i class="fa fa-book"></i>Subjects</span></a></li>
 
                 </ul>
                 <h3>Admin</h3>

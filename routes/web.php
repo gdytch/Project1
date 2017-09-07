@@ -52,6 +52,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
       Route::get('student/profile/{id}' ,'AdminDashboardController@studentProfile')->name('view.student.profile');
       Route::get('test', 'AdminDashboardController@test')->name('admin.test');
       Route::post('runtest', 'AdminDashboardController@run_test')->name('admin.run.test');
+      Route::resource('subject', 'SubjectsController');
+      Route::post('subject/bulkstore', 'SubjectsController@bulkstore')->name('subject.bulkstore');
+      Route::get('subjects/bulkcreate', 'SubjectsController@bulkcreate')->name('subject.bulkcreate');
     });
 
 });
