@@ -37,6 +37,7 @@ class AddStudentInformations extends Migration
             $table->string('mother_last_name')->nullable();
             $table->string('mother_contact_no')->nullable();
 
+
         });
 
     }

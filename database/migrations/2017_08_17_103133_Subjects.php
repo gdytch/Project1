@@ -18,12 +18,15 @@ class Subjects extends Migration
             $table->string('course_id');
             $table->string('course_description');
             $table->string('classroom')->nullable();
-            $table->string('instructor')->nullable();
+            $table->integer('instructor')->nullable()->unsigned();
             $table->string('timeslot')->nullable();
-            $table->foreign('instructor')->references('id')->on('teachers');
-            $table->string('SY_id')->nullable();
-            $table->string('SEM_id')->nullable();
+            // $table->foreign('instructor')->references('id')->on('teachers');
+            // $table->string('year_id')->nullable();
+            $table->integer('semester_id')->nullable()->unsigned();
             $table->timestamps();
+        });
+        Schema::table('subjects', function (Blueprint $table){
+            $table->foreign('instructor')->references('id')->on('teachers')->onDelete('set null');
         });
     }
 

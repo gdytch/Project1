@@ -18,9 +18,14 @@ class DepartmentsTable extends Migration
             $table->string('department_id')->unique();
             $table->string('department_name');
             $table->integer('year_levels');
-            $table->string('department_head');
-            $table->foreign('department_id')->references('department_id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->integer('department_head')->unsigned()->nullable();
             $table->timestamps();
+        });
+        Schema::table('users', function ($table) {
+            $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('set null')->onUpdate('cascade');
+        });
+        Schema::table('departments', function ($table) {
+            $table->foreign('department_head')->references('id')->on('teachers')->onDelete('set null');
         });
     }
 

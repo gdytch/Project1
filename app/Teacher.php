@@ -34,5 +34,8 @@ class Teacher extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function subjects(){
+        return $this->hasMany('App\Subjects', 'instructor', 'id');
+    }
 
 }
